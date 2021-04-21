@@ -15,20 +15,28 @@ function ToDoListForm(props) {
     setTodo([]);
     e.preventDefault();
   }
+
+  function deleteSubmit(e){
+    props.deleteSubmit();
+    setTodo([]);
+    e.preventDefault();
+
+  }
   return (
-    <form onSubmit={handleSubmit}>
+    <form >
       <input type="text" placeholder="Add your task" onChange={handleChange} value={todo}></input>
-      <button type="submit">add</button>
+      <button type="submit" onClick={handleSubmit}>add</button>
+      <button type="submit" onClick={deleteSubmit}>clear</button>
     </form>
+
   );
 }
 
 /* Second component */
 function TaskList(props){
   const arr = props.data;
-
   const listItems = arr.map((val, i) => <div className="item"><li key={i}>task n° {i+1} : {val}</li>
-  <button type="submit">remove</button>
+  <button type="submit" >remove</button>
   </div>);
 
   return<ul>{listItems}</ul>
@@ -46,11 +54,16 @@ function DoList(props){
     setTodos([...todos, task]);
   }
 
+  function deleteTodo(){
+    todos = [];
+    setTodos([todos]);
+  }
+
   return (
     <div className="app">
       <h1>ToDo-List</h1>
-      <ToDoListForm handleSubmit={addTodo}/>
-      <TaskList data={todos} />
+      <ToDoListForm handleSubmit={addTodo} deleteSubmit={deleteTodo}/>
+      <TaskList data={todos}  />
     </div>
 
   );
