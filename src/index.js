@@ -5,7 +5,6 @@ import reportWebVitals from './reportWebVitals';
 const tasks = [];
 ReactDOM.render(
   <React.StrictMode>
-    <h1>To-Do-List</h1>
     <DoList  data={tasks}/>
   </React.StrictMode>,
   document.getElementById('root')

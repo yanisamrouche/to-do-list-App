@@ -1,0 +1,49 @@
+
+.app{
+    background-color: darkcyan;
+    right: inherit;
+}
+form{
+    position: relative;
+    align-items: center;
+}
+input{
+    background-color: mediumturquoise;
+    margin: 0;
+    border: none;
+    border-radius: 0;
+    height: 100%;
+    width: 30%;
+}
+body{
+    background-color: cadetblue;
+}
+button{
+    background: rgb(238, 163, 97);
+    width: 10%;
+}
+ul{
+    font-family: 'Courier New', Courier, monospace;
+    font-style: italic;
+    font-weight: lighter;
+}
+h1{
+    font-family: 'Courier New', Courier, monospace;
+    color: rgb(238, 163, 97);
+}
+
+  
+  /* Style the list items */
+ ul li {
+    background: #eee;
+    list-style: none;
+}
+.item{
+   
+    margin: 0%;
+    padding: 0%;
+    align-content: center;    
+
+}
+ 
+  

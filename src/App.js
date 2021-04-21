@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './style.css';
 
 /* First component */
 function ToDoListForm(props) {
@@ -17,7 +18,7 @@ function ToDoListForm(props) {
   return (
     <form onSubmit={handleSubmit}>
       <input type="text" placeholder="Add your task" onChange={handleChange} value={todo}></input>
-      <button type="submit">Add</button>
+      <button type="submit">add</button>
     </form>
   );
 }
@@ -26,15 +27,17 @@ function ToDoListForm(props) {
 function TaskList(props){
   const arr = props.data;
 
-  const listItems = arr.map((val, i) => <li key={i}>{val}</li>);
+  const listItems = arr.map((val, i) => <div className="item"><li key={i}>task n° {i+1} : {val}</li>
+  <button type="submit">remove</button>
+  </div>);
 
-  return <ul>{listItems}</ul>
+  return<ul>{listItems}</ul>
+    
+  
 
 }
 
-
-
-
+/* parent component */
 function DoList(props){
 
   const [todos, setTodos] = useState(props.data);
@@ -44,7 +47,8 @@ function DoList(props){
   }
 
   return (
-    <div>
+    <div className="app">
+      <h1>ToDo-List</h1>
       <ToDoListForm handleSubmit={addTodo}/>
       <TaskList data={todos} />
     </div>
