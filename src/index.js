@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+import DoList from './App';
 import reportWebVitals from './reportWebVitals';
-
+const tasks = [];
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <h1>To-Do-List</h1>
+    <DoList  data={tasks}/>
   </React.StrictMode>,
   document.getElementById('root')
 );

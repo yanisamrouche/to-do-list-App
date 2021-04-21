@@ -1,25 +1,56 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
 
-function App() {
+/* First component */
+function ToDoListForm(props) {
+
+  const [todo, setTodo] = useState([]);
+
+  function handleChange(e){
+    setTodo(e.target.value);
+  }
+
+  function handleSubmit(e){
+    props.handleSubmit(todo);
+    setTodo([]);
+    e.preventDefault();
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <form onSubmit={handleSubmit}>
+      <input type="text" placeholder="Add your task" onChange={handleChange} value={todo}></input>
+      <button type="submit">Add</button>
+    </form>
   );
 }
 
-export default App;
+/* Second component */
+function TaskList(props){
+  const arr = props.data;
+
+  const listItems = arr.map((val, i) => <li key={i}>{val}</li>);
+
+  return <ul>{listItems}</ul>
+
+}
+
+
+
+
+function DoList(props){
+
+  const [todos, setTodos] = useState(props.data);
+
+  function addTodo(task){
+    setTodos([...todos, task]);
+  }
+
+  return (
+    <div>
+      <ToDoListForm handleSubmit={addTodo}/>
+      <TaskList data={todos} />
+    </div>
+
+  );
+
+}
+
+export default DoList;
